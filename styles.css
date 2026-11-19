@@ -150,8 +150,8 @@ a { color: inherit; }
 @keyframes in-wipe { from { clip-path: inset(-10% 100% -10% 0); } to { clip-path: inset(-10% 0 -10% 0); } }
 @media (prefers-reduced-motion: no-preference) {
   .js .in {
-    animation: in-wipe .9s steps(12, end) backwards;
-    animation-delay: calc(var(--i, 0) * 110ms + var(--enter-offset, 80ms));
+    animation: in-wipe .45s steps(8, end) backwards;
+    animation-delay: calc(var(--i, 0) * 55ms + var(--enter-offset, 40ms));
   }
 }
 

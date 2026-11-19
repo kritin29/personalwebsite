@@ -9,7 +9,7 @@ SITE = "https://mutyamkritin.com"
 HEAD_JS = ("(function(){var d=document.documentElement;d.classList.add('js');"
            "try{if(sessionStorage.getItem('km-pt')){sessionStorage.removeItem('km-pt');"
            "if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('pt-in');"
-           "d.style.setProperty('--enter-offset','360ms');"
+           "d.style.setProperty('--enter-offset','300ms');"
            "setTimeout(function(){d.classList.remove('pt-in')},1500)}}}catch(e){}})()")
 
 

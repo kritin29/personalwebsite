@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BUILD 0.66 · Kritin Mutyam</title>
+  <meta name="description" content="A first-person stealth story in Unreal Engine 5: cross a dinosaur valley over three days while the raptors learn how you escaped.">
+  <link rel="canonical" href="https://mutyamkritin.com/games/build-066">
+  <meta name="theme-color" content="#0f1119">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kritin Mutyam">
+  <meta property="og:url" content="https://mutyamkritin.com/games/build-066">
+  <meta property="og:title" content="BUILD 0.66 · Kritin Mutyam">
+  <meta property="og:description" content="A first-person stealth story in Unreal Engine 5: cross a dinosaur valley over three days while the raptors learn how you escaped.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('km-pt')){sessionStorage.removeItem('km-pt');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('pt-in');d.style.setProperty('--enter-offset','300ms');setTimeout(function(){d.classList.remove('pt-in')},1500)}}}catch(e){}})()</script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/silkscreen/v6/m8JXjfVPf62XiF7kO-i9YLNlaw.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/ibmplexmono/v23/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/main.js" defer></script>
+</head>
+<body data-up="/games" data-next="/games/wingblade-arena" data-detail="build-066">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand pop" href="/">Kritin Mutyam</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a class="pop" href="/about">About</a></li>
+          <li><a class="pop" href="/software">Software</a></li>
+          <li><a class="pop" href="/games" aria-current="page">Games</a></li>
+          <li><a class="pop" href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container game detail">
+    <a class="crumb pop in" href="/games" style="--i:0">← Games</a>
+    <nav class="toc" aria-label="On this page"><p class="toc-k">On this page</p><ol><li><a href="#the-game"><span class="toc-n">01</span>The game</a></li><li><a href="#core-loop"><span class="toc-n">02</span>Core loop</a></li><li><a href="#credits"><span class="toc-n">03</span>Credits</a></li><li><a href="#systems"><span class="toc-n">04</span>Systems</a></li><li><a href="#mechanics"><span class="toc-n">05</span>Mechanics</a></li><li><a href="#watch"><span class="toc-n">06</span>Watch</a></li><li><a href="#clips"><span class="toc-n">07</span>Clips</a></li><li><a href="#screens"><span class="toc-n">08</span>Screens</a></li><li><a href="#high-scores"><span class="toc-n">09</span>High scores</a></li></ol><span class="toc-bar" aria-hidden="true"><span></span></span></nav>
+    <h1 class="page-title in" style="--i:14">BUILD 0.66</h1>
+    <p class="intro in" style="--i:15">A first-person stealth story in Unreal Engine 5: cross a dinosaur valley over three days while the raptors learn how you escaped.</p>
+    <dl class="hud in" style="--i:16"><div><dt>Role</dt><dd>Solo: design and direction</dd></div><div><dt>Engine</dt><dd>Unreal Engine 5.8</dd></div><div><dt>Jam</dt><dd>Epic AI MegaJam 2026</dd></div><div><dt>Built</dt><dd>90 hours, Nov 2026</dd></div></dl>
+    <div class="play-row in" style="--i:1"><a class="btn-play" href="https://kritin29.itch.io/build-066">&gt; Play on itch.io</a></div>
+    <p class="note in" style="--i:2; margin-top:16px">Built with AI end to end: I designed, directed, and playtested it; Claude Code wrote the C++ and Python, and AI tools made the models, voices, and sound.</p>
+    <figure class="clip clip--hero in" style="--i:3">
+      <video src="/assets/games/build-066/clip-01-herd-stealth.mp4" poster="/assets/games/build-066/clip-01-herd-stealth.webp" width="1280" height="720" autoplay muted loop playsinline preload="metadata" aria-label="Exhausted and hunted: hide in the middle of the herd, where nothing can smell you."></video>
+      <figcaption>Exhausted and hunted: hide in the middle of the herd, where nothing can smell you.</figcaption>
+    </figure>
+
+    <section class="block in" id="the-game" style="--i:4">
+      <h2 class="label"><span class="sec-n">01</span>The game</h2>
+      <p>A paleontology student brushes a fossil, finds a missing texture underneath, and wakes in build 0.66: the cut version of Earth where the dinosaurs never went extinct. With no weapons, he crosses one valley over three days by hiding, reading the wind, and throwing stones, while the raptors learn from how he survived the day before.</p>
+    </section>
+
+    <section class="block in" id="core-loop" style="--i:5">
+      <h2 class="label"><span class="sec-n">02</span>Core loop</h2>
+      <ol class="flow" aria-label="Core gameplay loop"><li><span class="flow-k">Arrive</span>Each day opens with a cinematic</li><li><span class="flow-k">Observe</span>Watch animals, write field notes</li><li><span class="flow-k">Sneak</span>Cover, crouching, wind, and thrown stones</li><li><span class="flow-k">Survive</span>Escape the day&#x27;s chase</li><li><span class="flow-k">Reach the seam</span>Glitch light ends the day</li><li><span class="flow-k">Learn</span>A card names what they learned</li></ol>
+    </section>
+
+    <section class="block in" id="credits" style="--i:6">
+      <h2 class="label"><span class="sec-n">03</span>Credits</h2>
+      <dl class="credits"><div><dt>Design and direction</dt><dd>Kritin Mutyam</dd></div><div><dt>Playtesting</dt><dd>Kritin Mutyam</dd></div><div><dt>Code and tooling</dt><dd>Claude Code (C++ and Python), directed by me</dd></div><div><dt>Models</dt><dd>Meshy and Hyper3D Rodin, rigged and animated by script</dd></div><div><dt>Voice and sound</dt><dd>ElevenLabs and synthesized audio</dd></div><div><dt>Engine</dt><dd>Unreal Engine 5.8, First Person template</dd></div></dl>
+    </section>
+
+    <section class="block in" id="systems" style="--i:7">
+      <h2 class="label"><span class="sec-n">04</span>Systems</h2>
+      <ul><li>Cross-day learning AI: a subsystem that survives level loads records how you got through each day (time in ferns, logs, or water; stones thrown; distance sprinted). The next day, raptors search that cover first, trace stones to where they were thrown from, or split up to flank.</li><li>Raptor brain: sight and hearing perception plus a custom downwind smell check fuse into one awareness value that drives a six-state machine: patrol, suspicious, investigate, hunt, search, caught.</li><li>Stealth model: wind, weather, and cover volumes. Crouching in cover cuts visibility to about 4 m, and footsteps carry 2, 6, or 15 m depending on how you move.</li><li>Data-driven days: a director runs each day from structured steps, milestones, and cinematics, and checkpoints restore every hunter and herd exactly. A scripted player replays the game to test them.</li><li>Set pieces: a T-rex chase down a 300 m gully, a stampede of 960 instanced animals where the nearest swap to full skeletal meshes, and a Triceratops ride.</li><li>Shipping: cooked under a 1 GB cap on a 16 GB laptop, running at 99 fps at 720p on the heaviest day.</li></ul>
+    </section>
+
+    <section class="block in" id="mechanics" style="--i:8">
+      <h2 class="label"><span class="sec-n">05</span>Mechanics <span class="feat-count">16</span></h2>
+      <ul class="feats"><li><span class="feat-n">Fossil dig prologue</span><span class="feat-d">Kneel and brush the dust off a fossil with the mouse.</span></li><li><span class="feat-n">Three-day valley</span><span class="feat-d">Day 1, Day 2, and a Final Day, then an epilogue and credits.</span></li><li><span class="feat-n">Hide anywhere</span><span class="feat-d">Crouch in ferns, hollow logs, or water.</span></li><li><span class="feat-n">Adaptive raptors</span><span class="feat-d">They change how they search, ignore distractions, and flank, based on your last day.</span></li><li><span class="feat-n">Thrown stones</span><span class="feat-d">Distract hunters, until they learn to trace the throw.</span></li><li><span class="feat-n">Read the wind</span><span class="feat-d">A pinch of dust shows the wind, and so where your scent is going.</span></li><li><span class="feat-n">Field notes</span><span class="feat-d">Observe animals to fill an illustrated notebook that carries across days.</span></li><li><span class="feat-n">Developer&#x27;s notes</span><span class="feat-d">Collectibles written as fragments of the world&#x27;s source code.</span></li><li><span class="feat-n">Herds and flocks</span><span class="feat-d">Herds hide your scent and give moving cover; startled flocks give you away.</span></li><li><span class="feat-n">T-rex ambush</span><span class="feat-d">A gully chase and a hollow-log scare on Day 2.</span></li><li><span class="feat-n">A world coming apart</span><span class="feat-d">Tears in the air, missing ground, meteor falls, and a stampede.</span></li><li><span class="feat-n">Triceratops ride</span><span class="feat-d">Balance and grip your way through the finale.</span></li><li><span class="feat-n">Diegetic guidance</span><span class="feat-d">One objective at a time and a walking waypoint, no clutter.</span></li><li><span class="feat-n">Voiced story</span><span class="feat-d">A voiced protagonist with positional audio throughout.</span></li><li><span class="feat-n">Checkpoints</span><span class="feat-d">Getting caught restores the whole moment, not just your position.</span></li><li><span class="feat-n">Saves and menus</span><span class="feat-d">Main menu, continue, restart the day, and saves at each day.</span></li></ul>
+    </section>
+
+    <section class="block in" id="watch" style="--i:9">
+      <h2 class="label"><span class="sec-n">06</span>Watch</h2>
+      <button class="yt" type="button" data-yt="msYTPIn5dRo" aria-label="Play video: BUILD 0.66 trailer" style="background-image:url(https://i.ytimg.com/vi/msYTPIn5dRo/hqdefault.jpg)"><span class="yt-play" aria-hidden="true"></span><span class="yt-title">BUILD 0.66 trailer</span></button>
+    </section>
+
+    <section class="block in" id="clips" style="--i:10">
+      <h2 class="label"><span class="sec-n">07</span>Clips</h2>
+      <div class="shots">
+        <figure class="clip"><video src="/assets/games/build-066/clip-02-apex-hollow-log.mp4" poster="/assets/games/build-066/clip-02-apex-hollow-log.webp" width="1280" height="720" autoplay muted loop playsinline preload="none" aria-label="Day 2: the T-rex prowls while you make for the hollow log."></video><figcaption>Day 2: the T-rex prowls while you make for the hollow log.</figcaption></figure>
+        <figure class="clip"><video src="/assets/games/build-066/clip-03-seam-derender.mp4" poster="/assets/games/build-066/clip-03-seam-derender.webp" width="1280" height="720" autoplay muted loop playsinline preload="none" aria-label="Reaching the seam: the world de-renders as the day ends."></video><figcaption>Reaching the seam: the world de-renders as the day ends.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="block in" id="screens" style="--i:11">
+      <h2 class="label"><span class="sec-n">08</span>Screens</h2>
+      <div class="shots">
+        <figure class="shot"><img src="/assets/games/build-066/01-longneck-first-sighting.webp" width="1600" height="900" alt="A longneck dinosaur rises over the valley beside the player" loading="lazy"><figcaption>First sighting in the valley.</figcaption></figure>
+        <figure class="shot"><img src="/assets/games/build-066/02-hide-in-the-ferns.webp" width="1600" height="900" alt="Crouched in a fern bed with a hide prompt" loading="lazy"><figcaption>Ferns, logs, and water are cover, until the raptors learn to check them.</figcaption></figure>
+        <figure class="shot"><img src="/assets/games/build-066/04-run-to-the-light.webp" width="1600" height="900" alt="A rain-soaked chase with the threat-arc HUD" loading="lazy"><figcaption>The chase: threat arcs show where you&#x27;re being hunted from.</figcaption></figure>
+        <figure class="shot"><img src="/assets/games/build-066/05-day-card-they-remember-the-ferns.webp" width="1600" height="900" alt="Day card reading: They remember the ferns" loading="lazy"><figcaption>Each new day names what the raptors learned.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="block in" id="high-scores" style="--i:12">
+      <h2 class="label"><span class="sec-n">09</span>High scores</h2>
+      <div class="stats"><p class="stat"><span class="stat-v">90 h</span><span class="stat-l">solo jam build</span></p><p class="stat"><span class="stat-v">16</span><span class="stat-l">rigged dinosaur species</span></p><p class="stat"><span class="stat-v">960</span><span class="stat-l">animals in the stampede</span></p><p class="stat"><span class="stat-v">99 fps</span><span class="stat-l">on the heaviest day</span></p></div>
+    </section>
+
+    <aside class="takeaway in" style="--i:13">
+      <p class="label">Dev note</p>
+      <p>Directing AI well is a design job: every learned behaviour had to trace from a tracked stat to something the player can see and understand.</p>
+    </aside>
+
+    <nav class="pager" aria-label="More games"><a class="next" href="/games/wingblade-arena"><span class="pager-k">Prev level →</span><span class="pager-t">Wingblade Arena</span></a></nav>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Contact me: <a class="pop" href="mailto:mutyam@wisc.edu">mutyam@wisc.edu</a></p>
+      <p class="explored"></p>
+      <ul aria-label="Profiles">
+        <li><a class="pop" href="https://github.com/kritin29">GitHub</a></li>
+        <li><a class="pop" href="https://www.linkedin.com/in/mutyam-kritin">LinkedIn</a></li>
+        <li><a class="pop" href="https://kritin29.itch.io/">itch.io</a></li>
+      </ul>
+      <p class="controls"><span><kbd>1–9</kbd>Jump to section</span><span><kbd>←→</kbd>Prev / next</span><span><kbd>Esc</kbd>Back</span></p>
+    </div>
+  </footer>
+</body>
+</html>

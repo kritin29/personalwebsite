@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wingblade Arena · Kritin Mutyam</title>
+  <meta name="description" content="Skill-based aerial PvP on Roblox: super-jump, throw a spear at the apex, glide, and finish with a sword before you land.">
+  <link rel="canonical" href="https://mutyamkritin.com/games/wingblade-arena">
+  <meta name="theme-color" content="#0f1119">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kritin Mutyam">
+  <meta property="og:url" content="https://mutyamkritin.com/games/wingblade-arena">
+  <meta property="og:title" content="Wingblade Arena · Kritin Mutyam">
+  <meta property="og:description" content="Skill-based aerial PvP on Roblox: super-jump, throw a spear at the apex, glide, and finish with a sword before you land.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('km-pt')){sessionStorage.removeItem('km-pt');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('pt-in');d.style.setProperty('--enter-offset','300ms');setTimeout(function(){d.classList.remove('pt-in')},1500)}}}catch(e){}})()</script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/silkscreen/v6/m8JXjfVPf62XiF7kO-i9YLNlaw.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/ibmplexmono/v23/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/main.js" defer></script>
+</head>
+<body data-up="/games" data-prev="/games/build-066" data-next="/games/ascend-and-capture" data-detail="wingblade-arena">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand pop" href="/">Kritin Mutyam</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a class="pop" href="/about">About</a></li>
+          <li><a class="pop" href="/software">Software</a></li>
+          <li><a class="pop" href="/games" aria-current="page">Games</a></li>
+          <li><a class="pop" href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container game detail">
+    <a class="crumb pop in" href="/games" style="--i:0">← Games</a>
+    <nav class="toc" aria-label="On this page"><p class="toc-k">On this page</p><ol><li><a href="#the-game"><span class="toc-n">01</span>The game</a></li><li><a href="#core-loop"><span class="toc-n">02</span>Core loop</a></li><li><a href="#credits"><span class="toc-n">03</span>Credits</a></li><li><a href="#systems"><span class="toc-n">04</span>Systems</a></li><li><a href="#mechanics"><span class="toc-n">05</span>Mechanics</a></li><li><a href="#watch"><span class="toc-n">06</span>Watch</a></li><li><a href="#clips"><span class="toc-n">07</span>Clips</a></li><li><a href="#screens"><span class="toc-n">08</span>Screens</a></li><li><a href="#asset-pipeline-ai-directed"><span class="toc-n">09</span>Asset pipeline · AI-directed</a></li><li><a href="#high-scores"><span class="toc-n">10</span>High scores</a></li></ol><span class="toc-bar" aria-hidden="true"><span></span></span></nav>
+    <h1 class="page-title in" style="--i:14">Wingblade Arena</h1>
+    <p class="intro in" style="--i:15">Skill-based aerial PvP on Roblox: super-jump, throw a spear at the apex, glide, and finish with a sword before you land.</p>
+    <dl class="hud in" style="--i:16"><div><dt>Role</dt><dd>Game director and designer</dd></div><div><dt>Platform</dt><dd>Roblox: PC, mobile, gamepad</dd></div><div><dt>Genre</dt><dd>Aerial PvP arena</dd></div><div><dt>Players</dt><dd>Up to 16 per server</dd></div></dl>
+    <p class="note in" style="--i:1; margin-top:16px">AI-directed: I designed, directed, balanced, art-directed, and playtested it, and I run live ops. Claude wrote the Luau and built the 3D assets through Blender MCP.</p>
+    <figure class="clip clip--hero in" style="--i:2">
+      <video src="/assets/games/wingblade/clip-02-ferryman-flyby.mp4" poster="/assets/games/wingblade/clip-02-ferryman-flyby.webp" width="1280" height="720" autoplay muted loop playsinline preload="metadata" aria-label="Super jump off the arena, past the lobby galleon, spear ready at the apex."></video>
+      <figcaption>Super jump off the arena, past the lobby galleon, spear ready at the apex.</figcaption>
+    </figure>
+
+    <section class="block in" id="the-game" style="--i:3">
+      <h2 class="label"><span class="sec-n">01</span>The game</h2>
+      <p>Up to 16 players fight free-for-all rounds on rotating sky-island arenas, chaining super jumps, mid-air spear throws, glides, and sword dashes. Spears change how you play and are earned with coins only; everything paid is cosmetic, so the game stays skill-first.</p>
+    </section>
+
+    <section class="block in" id="core-loop" style="--i:4">
+      <h2 class="label"><span class="sec-n">02</span>Core loop</h2>
+      <ol class="flow" aria-label="Core gameplay loop"><li><span class="flow-k">Launch</span>Super jump to the apex</li><li><span class="flow-k">Throw</span>One server-simulated spear per flight</li><li><span class="flow-k">Glide</span>Steer with the camera, look down to dive</li><li><span class="flow-k">Strike</span>Sword dash-slash before you land</li><li><span class="flow-k">Land</span>A short cooldown: the balance lever</li><li><span class="flow-k">Progress</span>XP and coins for crates and new spears</li></ol>
+    </section>
+
+    <section class="block in" id="credits" style="--i:5">
+      <h2 class="label"><span class="sec-n">03</span>Credits</h2>
+      <dl class="credits"><div><dt>Direction and game design</dt><dd>Kritin Mutyam</dd></div><div><dt>Balance, economy, live ops</dt><dd>Kritin Mutyam</dd></div><div><dt>Art direction, playtesting</dt><dd>Kritin Mutyam</dd></div><div><dt>Design specs</dt><dd>Dash-swing hitbox, apex dash, themed crates, tutorial: Kritin Mutyam</dd></div><div><dt>Code and 3D assets</dt><dd>Claude, directed by me (Roblox Studio and Blender MCP)</dd></div></dl>
+    </section>
+
+    <section class="block in" id="systems" style="--i:6">
+      <h2 class="label"><span class="sec-n">04</span>Systems</h2>
+      <ul><li>Lag-compensated melee: a swept-capsule hitbox along the dash path, validated on the server, replaced a rewind buffer and recovered hits lost at 100–150 ms ping. The spec was mine.</li><li>Client-predicted flight with server validation: sprint, two air dashes, super jump, an apex throw window, glide with dive, mantle, and zip.</li><li>Server-simulated spears with aim assist, a lock-on warning, sword deflects, and eight abilities: stun, bleed, smoke, launch, split, swap, harpoon, and zip.</li><li>Anti-exploit: one gate for every damage path, speed limits derived from map geometry, one spear per flight, and rate-limited remotes.</li><li>Cross-server duels: region-bucketed queues, reserved servers, parties that travel together, and a hidden Elo rating feeding matchmaking, simulated end to end before launch.</li><li>Economy and saves: session-locked saves that merge instead of overwrite, leaderboards, crate pity, and a 200,000-roll simulation that caught a paid item leaking into free drops.</li><li>Live ops from telemetry: an anti-cheat false positive traced to gravity, a round-loop outage fixed with a supervisor, and a server memory leak growing from 230 MB to 6.5 GB a day.</li></ul>
+    </section>
+
+    <section class="block in" id="mechanics" style="--i:7">
+      <h2 class="label"><span class="sec-n">05</span>Mechanics <span class="feat-count">24</span></h2>
+      <ul class="feats"><li><span class="feat-n">Free-for-all rounds</span><span class="feat-d">Five-minute rounds for up to 16 players.</span></li><li><span class="feat-n">Map rotation</span><span class="feat-d">Colosseum, Engine, and Carcass Isle.</span></li><li><span class="feat-n">Aerial moveset</span><span class="feat-d">Super jump, air dashes, glide, zip, and mantle.</span></li><li><span class="feat-n">Eight spears</span><span class="feat-d">Each with its own ability, earned with coins only.</span></li><li><span class="feat-n">Sword combat</span><span class="feat-d">Combos, dash-swings, deflects, and heal on kill.</span></li><li><span class="feat-n">Block</span><span class="feat-d">A server-timed guard.</span></li><li><span class="feat-n">Ragdolls and spectate</span><span class="feat-d">Spectate shows your target&#x27;s health.</span></li><li><span class="feat-n">Leader crown</span><span class="feat-d">A 3D crown over whoever&#x27;s winning.</span></li><li><span class="feat-n">Results cinematic</span><span class="feat-d">A top-three podium with stat plaques.</span></li><li><span class="feat-n">Kill bonuses</span><span class="feat-d">Headshots, aerials, long shots, and multi-kills stack.</span></li><li><span class="feat-n">Local duels</span><span class="feat-d">1v1 and 2v2 on floating islands, first to four.</span></li><li><span class="feat-n">Online duels</span><span class="feat-d">A cross-server queue with rematch votes.</span></li><li><span class="feat-n">Tutorial island</span><span class="feat-d">A private island: sprint, dash, zip, throw, then five dummies.</span></li><li><span class="feat-n">Crates</span><span class="feat-d">Themed crates on a three-day rotation, with spin reveals and pity.</span></li><li><span class="feat-n">Rotating shop</span><span class="feat-d">A featured crate, bundle, spotlight, and daily item.</span></li><li><span class="feat-n">Armory</span><span class="feat-d">Equip, then preview your character wearing it in 3D.</span></li><li><span class="feat-n">159 cosmetics</span><span class="feat-d">54 swords, 84 wings, and 21 helmets across six rarities.</span></li><li><span class="feat-n">Dailies</span><span class="feat-d">Login streaks and daily quests.</span></li><li><span class="feat-n">Leaderboards</span><span class="feat-d">Global wins and kills.</span></li><li><span class="feat-n">Titles and badges</span><span class="feat-d">Plus reward codes and gifting.</span></li><li><span class="feat-n">Private servers</span><span class="feat-d">An owner panel, with rewards paused.</span></li><li><span class="feat-n">Touch controls</span><span class="feat-d">A full mobile layout with a layout editor.</span></li><li><span class="feat-n">Gamepad support</span><span class="feat-d">Full controller play.</span></li><li><span class="feat-n">Seasonal event</span><span class="feat-d">Hollow Night for Halloween 2026.</span></li></ul>
+    </section>
+
+    <section class="block in" id="watch" style="--i:8">
+      <h2 class="label"><span class="sec-n">06</span>Watch</h2>
+      <figure class="trailer"><video src="/assets/games/wingblade/trailer.mp4" poster="/assets/games/wingblade/trailer.webp" width="1280" height="720" controls preload="none" playsinline aria-label="Wingblade Arena gameplay trailer"></video></figure>
+    </section>
+
+    <section class="block in" id="clips" style="--i:9">
+      <h2 class="label"><span class="sec-n">07</span>Clips</h2>
+      <div class="shots">
+        <figure class="clip"><video src="/assets/games/wingblade/clip-01-engine-glide-spear.mp4" poster="/assets/games/wingblade/clip-01-engine-glide-spear.webp" width="1280" height="720" autoplay muted loop playsinline preload="none" aria-label="Gliding over the Engine map into a spear throw."></video><figcaption>Gliding over the Engine map into a spear throw.</figcaption></figure>
+        <figure class="clip"><video src="/assets/games/wingblade/clip-03-veil-smoke-strike.mp4" poster="/assets/games/wingblade/clip-03-veil-smoke-strike.webp" width="1280" height="720" autoplay muted loop playsinline preload="none" aria-label="The Veil spear&#x27;s smoke cloud blocks aim assist."></video><figcaption>The Veil spear&#x27;s smoke cloud blocks aim assist.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="block in" id="screens" style="--i:10">
+      <h2 class="label"><span class="sec-n">08</span>Screens</h2>
+      <div class="shots">
+        <figure class="shot"><img src="/assets/games/wingblade/shot-01-HERO-ferryman-flight.webp" width="1600" height="900" alt="Winged player flying past a sky galleon with a spear" loading="lazy"><figcaption>Red wings, a spear, and the Ferryman galleon behind.</figcaption></figure>
+        <figure class="shot"><img src="/assets/games/wingblade/shot-02-engine-glide.webp" width="1600" height="900" alt="Gliding over the Engine map" loading="lazy"><figcaption>Gliding over the Engine map.</figcaption></figure>
+        <figure class="shot"><img src="/assets/games/wingblade/shot-03-spear-throw-engine.webp" width="1600" height="900" alt="Spear ability rings over a platform" loading="lazy"><figcaption>Spear ability rings over the Engine platform.</figcaption></figure>
+        <figure class="shot"><img src="/assets/games/wingblade/shot-06-veil-smoke.webp" width="1600" height="900" alt="A smoke cloud from the Veil spear" loading="lazy"><figcaption>Veil smoke: counterplay to aim assist.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="block in" id="asset-pipeline-ai-directed" style="--i:11">
+      <h2 class="label"><span class="sec-n">09</span>Asset pipeline · AI-directed <span class="feat-count">16 of 167</span></h2>
+      <p class="asset-note">The game ships 167 finished, game-ready 3D cosmetics: 54 swords, 84 wings, 21 helmets, and 8 spears. Claude modeled each one in Blender through MCP from my art direction. Procedural Blender scripts build every asset, the export decimates it to Roblox&#x27;s 10,000-triangle limit, and an audit re-imports each file: 0 problems across 151 meshes. A few of them:</p>
+      <div class="asset-rows">
+        <div class="asset-row"><p class="asset-row-k">Swords</p><div class="assets assets--icons"><figure class="asset"><img src="/assets/games/wingblade/pipeline/sword-voranyx.webp" width="256" height="256" alt="Voranyx (sword)" loading="lazy"><figcaption>Voranyx</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/sword-krakenfang.webp" width="256" height="256" alt="Krakenfang (sword)" loading="lazy"><figcaption>Krakenfang</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/sword-moonblade.webp" width="256" height="256" alt="Moonblade (sword)" loading="lazy"><figcaption>Moonblade</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/sword-kaldris.webp" width="256" height="256" alt="Kaldris (sword)" loading="lazy"><figcaption>Kaldris</figcaption></figure></div></div>
+        <div class="asset-row"><p class="asset-row-k">Spears</p><div class="assets assets--icons"><figure class="asset"><img src="/assets/games/wingblade/pipeline/spear-bolt.webp" width="256" height="256" alt="Bolt (spear)" loading="lazy"><figcaption>Bolt</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/spear-veilspar.webp" width="256" height="256" alt="Veilspar (spear)" loading="lazy"><figcaption>Veilspar</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/spear-tidecaller.webp" width="256" height="256" alt="Tidecaller (spear)" loading="lazy"><figcaption>Tidecaller</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/spear-boatman.webp" width="256" height="256" alt="Boatman (spear)" loading="lazy"><figcaption>Boatman</figcaption></figure></div></div>
+        <div class="asset-row"><p class="asset-row-k">Wings</p><div class="assets assets--icons"><figure class="asset"><img src="/assets/games/wingblade/pipeline/wings-sovereign.webp" width="256" height="256" alt="Sovereign (wing)" loading="lazy"><figcaption>Sovereign</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/wings-skeletal.webp" width="256" height="256" alt="Skeletal (wing)" loading="lazy"><figcaption>Skeletal</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/wings-nightgaze.webp" width="256" height="256" alt="Nightgaze (wing)" loading="lazy"><figcaption>Nightgaze</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/wings-greatwave.webp" width="256" height="256" alt="Great Wave (wing)" loading="lazy"><figcaption>Great Wave</figcaption></figure></div></div>
+        <div class="asset-row"><p class="asset-row-k">Helmets</p><div class="assets assets--icons"><figure class="asset"><img src="/assets/games/wingblade/pipeline/helmet-hounskull.webp" width="256" height="256" alt="Hounskull (helmet)" loading="lazy"><figcaption>Hounskull</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/helmet-ronin.webp" width="256" height="256" alt="Ronin (helmet)" loading="lazy"><figcaption>Ronin</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/helmet-wyrmguard.webp" width="256" height="256" alt="Wyrmguard (helmet)" loading="lazy"><figcaption>Wyrmguard</figcaption></figure><figure class="asset"><img src="/assets/games/wingblade/pipeline/helmet-harbinger.webp" width="256" height="256" alt="Harbinger (helmet)" loading="lazy"><figcaption>Harbinger</figcaption></figure></div></div>
+      </div>
+    </section>
+
+    <section class="block in" id="high-scores" style="--i:12">
+      <h2 class="label"><span class="sec-n">10</span>High scores</h2>
+      <div class="stats"><p class="stat"><span class="stat-v">3.1M+</span><span class="stat-l">visits</span></p><p class="stat"><span class="stat-v">96%</span><span class="stat-l">like ratio</span></p><p class="stat"><span class="stat-v">56k+</span><span class="stat-l">favorites</span></p><p class="stat"><span class="stat-v">167</span><span class="stat-l">game-ready 3D assets</span></p></div>
+    </section>
+
+    <aside class="takeaway in" style="--i:13">
+      <p class="label">Dev note</p>
+      <p>The biggest wins came from playtesting and telemetry: knowing exactly what to ask for, and how to verify it, was the job.</p>
+    </aside>
+
+    <nav class="pager" aria-label="More games"><a class="prev" href="/games/build-066"><span class="pager-k">← Next level</span><span class="pager-t">BUILD 0.66</span></a><a class="next" href="/games/ascend-and-capture"><span class="pager-k">Prev level →</span><span class="pager-t">Ascend and Capture</span></a></nav>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Contact me: <a class="pop" href="mailto:mutyam@wisc.edu">mutyam@wisc.edu</a></p>
+      <p class="explored"></p>
+      <ul aria-label="Profiles">
+        <li><a class="pop" href="https://github.com/kritin29">GitHub</a></li>
+        <li><a class="pop" href="https://www.linkedin.com/in/mutyam-kritin">LinkedIn</a></li>
+        <li><a class="pop" href="https://kritin29.itch.io/">itch.io</a></li>
+      </ul>
+      <p class="controls"><span><kbd>1–9</kbd>Jump to section</span><span><kbd>←→</kbd>Prev / next</span><span><kbd>Esc</kbd>Back</span></p>
+    </div>
+  </footer>
+</body>
+</html>

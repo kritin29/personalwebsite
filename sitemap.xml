@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mutyamkritin.com/</loc><lastmod>2026-11-19</lastmod></url>
-  <url><loc>https://mutyamkritin.com/about</loc><lastmod>2026-11-19</lastmod></url>
-  <url><loc>https://mutyamkritin.com/projects</loc><lastmod>2026-11-19</lastmod></url>
-  <url><loc>https://mutyamkritin.com/contact</loc><lastmod>2026-11-19</lastmod></url>
+  <url><loc>https://mutyamkritin.com/</loc></url>
+  <url><loc>https://mutyamkritin.com/about</loc></url>
+  <url><loc>https://mutyamkritin.com/software</loc></url>
+  <url><loc>https://mutyamkritin.com/games</loc></url>
+  <url><loc>https://mutyamkritin.com/contact</loc></url>
+  <url><loc>https://mutyamkritin.com/software/ispace</loc></url>
+  <url><loc>https://mutyamkritin.com/software/undergraduation</loc></url>
+  <url><loc>https://mutyamkritin.com/software/the-strategist</loc></url>
+  <url><loc>https://mutyamkritin.com/software/syncinfra</loc></url>
+  <url><loc>https://mutyamkritin.com/software/facultywise</loc></url>
+  <url><loc>https://mutyamkritin.com/software/claudepearl</loc></url>
+  <url><loc>https://mutyamkritin.com/games/pig-crow-catastrophe</loc></url>
+  <url><loc>https://mutyamkritin.com/games/ascend-and-capture</loc></url>
+  <url><loc>https://mutyamkritin.com/games/wingblade-arena</loc></url>
+  <url><loc>https://mutyamkritin.com/games/build-066</loc></url>
 </urlset>

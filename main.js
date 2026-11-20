@@ -9,12 +9,13 @@
   /* ───────── Progress & achievements ───────── */
   const ACH = {
     explorer: ['Explorer', 'Visited every page'],
-    curious: ['Curious', 'Looked at every project'],
+    curious: ['Curious', 'Opened three deep dives'],
     cheat: ['Old habits', 'Entered the Konami code'],
     boost: ['Afterburner', 'Maxed out the trail boost'],
   };
-  const PAGES = ['home', 'about', 'projects', 'contact'];
-  const st = Object.assign({ pages: [], projects: [], got: [] }, store.get('km-progress', {}));
+  const PAGES = ['home', 'about', 'software', 'games', 'contact'];
+  const st = Object.assign({ pages: [], details: [], got: [] }, store.get('km-progress', {}));
+  if (!Array.isArray(st.details)) st.details = [];
   const save = () => store.set('km-progress', st);
 
   const toastWrap = document.createElement('div');
@@ -58,12 +59,9 @@
     pips.setAttribute('aria-label', `Explored ${seen} of ${PAGES.length} pages`);
   }
 
-  // Projects looked at
-  document.querySelectorAll('[data-project]').forEach(el => {
-    const mark = () => track('projects', el.dataset.project, 4, 'curious');
-    el.addEventListener('pointerenter', mark);
-    el.addEventListener('focusin', mark);
-  });
+  // Deep dives (detail pages) opened
+  const detailSlug = document.body.dataset.detail;
+  if (detailSlug) track('details', detailSlug, 3, 'curious');
 
   /* ───────── Mouse trail + click bursts ─────────
      A follower point eases toward the tail of the cursor arrow, so the trail
@@ -269,10 +267,103 @@
     document.querySelectorAll('.pt').forEach(c => c.remove());
   });
 
+  /* ───────── Gameplay clips: play only while visible; never autoplay under reduced motion ───────── */
+  const clips = document.querySelectorAll('.clip video');
+  if (reduced) {
+    clips.forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+  } else if ('IntersectionObserver' in window) {
+    const vio = new IntersectionObserver(entries => entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { v.play().catch(() => { v.controls = true; }); } else v.pause();
+    }), { threshold: .25 });
+    clips.forEach(v => { v.pause(); vio.observe(v); });
+  }
+
+  /* ───────── YouTube: load the real player only when clicked ───────── */
+  document.addEventListener('click', e => {
+    const b = e.target.closest && e.target.closest('.yt');
+    if (!b) return;
+    const f = document.createElement('iframe');
+    f.className = 'yt-frame';
+    f.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(b.dataset.yt)}?autoplay=1&rel=0`;
+    f.title = b.getAttribute('aria-label') || 'Video';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    b.replaceWith(f);
+  });
+
+  /* ───────── "On this page" sidebar: scroll-spy, progress, jump with a little burst ───────── */
+  const toc = document.querySelector('.toc');
+  let jumpToSection = null;
+  if (toc) {
+    const links = [...toc.querySelectorAll('a')];
+    const secs = links.map(a => document.getElementById(a.hash.slice(1))).filter(Boolean);
+    const bar = toc.querySelector('.toc-bar span');
+    let ticking = false;
+    const spy = () => {
+      ticking = false;
+      let cur = secs[0];
+      for (const s of secs) if (s.getBoundingClientRect().top < innerHeight * .35) cur = s;
+      links.forEach(a => a.classList.toggle('on', cur && a.hash === '#' + cur.id));
+      const h = document.documentElement;
+      if (bar) bar.style.transform = `scaleY(${Math.min(1, h.scrollTop / Math.max(1, h.scrollHeight - innerHeight))})`;
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+    spy();
+    jumpToSection = n => {
+      const s = secs[n - 1];
+      if (!s) return;
+      s.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+      history.replaceState(null, '', '#' + s.id);
+      s.classList.remove('flash'); void s.offsetWidth; s.classList.add('flash');
+      if (!reduced) setTimeout(() => {
+        const r = s.querySelector('.sec-n')?.getBoundingClientRect();
+        if (r) burst(r.left + r.width / 2, r.top + r.height / 2, 10, 2.2, 500, 0);
+      }, 450);
+    };
+    toc.addEventListener('click', e => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      jumpToSection(links.indexOf(a) + 1);
+    });
+  }
+
+  /* ───────── Screenshot lightbox: click a screenshot to see it full size ───────── */
+  let lightbox = null;
+  const closeLightbox = () => {
+    if (!lightbox) return;
+    lightbox.remove();
+    lightbox = null;
+    document.documentElement.style.overflow = '';
+  };
+  document.addEventListener('click', e => {
+    const img = e.target.closest && e.target.closest('.shot img');
+    if (lightbox) { closeLightbox(); return; }
+    if (!img) return;
+    lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-label', img.alt || 'Screenshot');
+    const big = new Image();
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt;
+    const hint = document.createElement('span');
+    hint.className = 'lightbox-hint';
+    hint.textContent = 'Click or Esc to close';
+    lightbox.append(hint, big);
+    document.body.appendChild(lightbox);
+    document.documentElement.style.overflow = 'hidden'; // scroll the image, not the page behind it
+    lightbox.tabIndex = -1;
+    lightbox.focus({ preventScroll: true });             // so arrow keys / Page Down scroll the image
+  });
+
   /* ───────── Keyboard controls + Konami code ─────────
-     ↑ ↓ select a project / link row · Enter opens it · ← → switch pages */
-  const PAGE_URL = { home: '/', about: '/about', projects: '/projects', contact: '/contact' };
-  const items = [...document.querySelectorAll('main .row, main .facts > div')]
+     ↑ ↓ select a row · Enter opens it · ← → switch pages
+     On a detail page: ← → previous / next entry · Esc back to the track */
+  const PAGE_URL = { home: '/', about: '/about', software: '/software', games: '/games', contact: '/contact' };
+  const { up: upUrl, prev: prevUrl, next: nextUrl } = document.body.dataset;
+  const items = [...document.querySelectorAll('main .row, main .tile, main .cart, main .facts > div')]
     .filter(el => el.matches('.row') || el.querySelector('a'));
   items.forEach(el => { if (!el.matches('a, [tabindex]')) el.tabIndex = -1; });
   let sel = -1;
@@ -301,6 +392,7 @@
     if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
 
     const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if (lightbox) { if (k === 'Escape' || k === 'Enter' || k === ' ') { e.preventDefault(); closeLightbox(); } return; }
     keys.push(k);
     if (keys.length > KONAMI.length) keys.shift();
     const kpos = konamiProgress();
@@ -311,13 +403,19 @@
       return;
     }
 
-    if ((k === 'ArrowDown' || k === 'ArrowUp') && items.length) {
+    if (jumpToSection && /^[1-9]$/.test(k)) {
+      e.preventDefault();
+      jumpToSection(Number(k));
+    } else if ((k === 'ArrowDown' || k === 'ArrowUp') && items.length) {
       e.preventDefault();
       const d = k === 'ArrowDown' ? 1 : -1;
       select(sel < 0 ? (d > 0 ? 0 : items.length - 1) : (sel + d + items.length) % items.length);
     } else if (k === 'Enter' && sel >= 0 && document.activeElement === items[sel] && !items[sel].matches('a')) {
       const link = items[sel].querySelector('a');
       if (link) { e.preventDefault(); link.click(); }
+    } else if (upUrl && (k === 'Escape' || ((k === 'ArrowLeft' || k === 'ArrowRight') && !(kpos >= 5 && kpos <= 8)))) {
+      const to = k === 'Escape' ? upUrl : k === 'ArrowLeft' ? prevUrl : nextUrl;
+      if (to) { e.preventDefault(); go(new URL(to, location.href).href); }
     } else if ((k === 'ArrowLeft' || k === 'ArrowRight') && page && PAGE_URL[page] && !(kpos >= 5 && kpos <= 8)) {
       e.preventDefault();
       const i = PAGES.indexOf(page), n = PAGES.length;

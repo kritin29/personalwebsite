@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClaudePearl · Kritin Mutyam</title>
+  <meta name="description" content="A desktop and phone app for AI-assisted development, with persistent project memory, auto-loaded skills, and live control of Roblox Studio and Blender.">
+  <link rel="canonical" href="https://mutyamkritin.com/software/claudepearl">
+  <meta name="theme-color" content="#0f1119">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kritin Mutyam">
+  <meta property="og:url" content="https://mutyamkritin.com/software/claudepearl">
+  <meta property="og:title" content="ClaudePearl · Kritin Mutyam">
+  <meta property="og:description" content="A desktop and phone app for AI-assisted development, with persistent project memory, auto-loaded skills, and live control of Roblox Studio and Blender.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('km-pt')){sessionStorage.removeItem('km-pt');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('pt-in');d.style.setProperty('--enter-offset','300ms');setTimeout(function(){d.classList.remove('pt-in')},1500)}}}catch(e){}})()</script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/silkscreen/v6/m8JXjfVPf62XiF7kO-i9YLNlaw.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/ibmplexmono/v23/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/main.js" defer></script>
+</head>
+<body data-up="/software" data-prev="/software/facultywise" data-detail="claudepearl">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand pop" href="/">Kritin Mutyam</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a class="pop" href="/about">About</a></li>
+          <li><a class="pop" href="/software" aria-current="page">Software</a></li>
+          <li><a class="pop" href="/games">Games</a></li>
+          <li><a class="pop" href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container detail">
+    <a class="crumb pop in" href="/software" style="--i:0">← Software</a>
+    <nav class="toc" aria-label="On this page"><p class="toc-k">On this page</p><ol><li><a href="#problem"><span class="toc-n">01</span>Problem</a></li><li><a href="#solution"><span class="toc-n">02</span>Solution</a></li><li><a href="#why-build-it"><span class="toc-n">03</span>Why build it</a></li><li><a href="#how-it-works"><span class="toc-n">04</span>How it works</a></li><li><a href="#features"><span class="toc-n">05</span>Features</a></li><li><a href="#screens"><span class="toc-n">06</span>Screens</a></li></ol><span class="toc-bar" aria-hidden="true"><span></span></span></nav>
+    <h1 class="page-title in" style="--i:6">ClaudePearl</h1>
+    <p class="intro in" style="--i:7">A desktop and phone app for AI-assisted development, with persistent project memory, auto-loaded skills, and live control of Roblox Studio and Blender.</p>
+    <dl class="hud in" style="--i:8"><div><dt>Role</dt><dd>Solo</dd></div><div><dt>Built</dt><dd>Jul 2026</dd></div><div><dt>Status</dt><dd>v1.5, in daily use</dd></div><div><dt>Stack</dt><dd>TypeScript · Fastify · SQLite · React · Tauri</dd></div></dl>
+    <p class="note in" style="--i:1; margin-top:24px">Private repository. Screenshots show the real app running on demo data.</p>
+    <figure class="shot in" style="--i:2">
+      <img src="/assets/claudepearl/chat.webp" width="1440" height="900" alt="ClaudePearl chat view: Claude reads a skill, inspects Roblox Studio, and builds a model through MCP">
+      <figcaption>Chat: Claude reads a project skill, inspects Roblox Studio, and builds the model live.</figcaption>
+    </figure>
+
+    <section class="block in" id="problem" style="--i:9">
+      <h2 class="label"><span class="sec-n">01</span>Problem</h2>
+      <p>Building Roblox games with Claude Code meant sitting at the desk watching a terminal through long runs, finding out about usage limits by hitting them, and re-explaining project decisions from one session to the next.</p>
+    </section>
+
+    <section class="block in" id="solution" style="--i:10">
+      <h2 class="label"><span class="sec-n">02</span>Solution</h2>
+      <p>A thin layer over the official Claude Agent SDK. One local backend owns every session, and the desktop app and a phone web app are both clients of it, so a chat started at the desk continues on the phone.</p>
+    </section>
+
+
+    <section class="block in" id="why-build-it" style="--i:3">
+      <h2 class="label"><span class="sec-n">03</span>Why build it</h2>
+      <p>By mid-2026, Claude Code already had memory, skills, and phone access. ClaudePearl rebuilds them around how I actually work as a solo game developer:</p>
+      <ul style="margin-top:12px"><li>One session, any screen: a local backend owns every session, so several named sessions keep running and I can steer any of them from my phone, with push alerts when replies land.</li><li>Memory I control: decisions are saved on purpose with remember:, stored as structured data, summarized per session, and browsable, instead of notes the model picks for itself.</li><li>Predictable context: skills are picked by keyword score and capped at two per prompt, so I always know what was loaded and why.</li><li>Limits at a glance: context, the 5-hour and weekly windows, and cost stay on screen instead of behind a command.</li><li>Game-dev tooling: live connection checks for Roblox Studio and Blender, and an overnight agent that researches Roblox trends and pitches a buildable concept.</li></ul>
+    </section>
+
+    <section class="block in" id="how-it-works" style="--i:11">
+      <h2 class="label"><span class="sec-n">04</span>How it works</h2>
+      <ol class="flow" aria-label="How it works, step by step"><li><span class="flow-k">Clients</span>Tauri desktop app + phone web app</li><li><span class="flow-k">API</span>Fastify REST API + a live WebSocket stream</li><li><span class="flow-k">Sessions</span>One long-lived Agent SDK session per project</li><li><span class="flow-k">Memory</span>SQLite per project: decisions, summaries, messages</li><li><span class="flow-k">Tools</span>MCP bridges to Roblox Studio and Blender</li></ol>
+      <ul style="margin-top:20px"><li>Each session starts with the project&#x27;s last summary and its 15 most recent decisions injected into the prompt.</li><li>Skills are scored by keyword match against the prompt; only the top two are loaded, never the whole library.</li><li>Messages sent mid-turn are queued into the running session, so Claude can be steered while it works.</li><li>An overnight research agent runs headless with web-only tools, a turn cap, a usage check, and output validation before anything is saved.</li><li>Tool status is probed directly, so the app shows whether Studio and Blender are really connected.</li></ul>
+    </section>
+
+    <section class="block in" id="features" style="--i:4">
+      <h2 class="label"><span class="sec-n">05</span>Features <span class="feat-count">14</span></h2>
+      <ul class="feats"><li><span class="feat-n">Roblox + Blender</span><span class="feat-d">Claude inspects and builds in Roblox Studio and Blender through MCP.</span></li><li><span class="feat-n">Dreams</span><span class="feat-d">A 4 AM research agent that scouts Roblox trends and pitches a buildable concept.</span></li><li><span class="feat-n">Phone access</span><span class="feat-d">A phone web app on the same sessions, over a private Tailscale network, with push alerts.</span></li><li><span class="feat-n">Memory constellation</span><span class="feat-d">A 3D map of sessions, decisions, summaries, skills, and projects.</span></li><li><span class="feat-n">Usage HUD</span><span class="feat-d">Context %, 5-hour and weekly limits with reset countdowns, and session cost.</span></li><li><span class="feat-n">Remembered decisions</span><span class="feat-d">Prefix a message with remember: and it&#x27;s injected into every future session.</span></li><li><span class="feat-n">Auto summaries</span><span class="feat-d">Ending a session has Claude summarize it to seed the next one.</span></li><li><span class="feat-n">Skills library</span><span class="feat-d">Project skill modules; the most relevant ones load automatically for each prompt.</span></li><li><span class="feat-n">Resumable sessions</span><span class="feat-d">Named sessions per project that survive restarts, in parallel chat tabs.</span></li><li><span class="feat-n">Live streaming</span><span class="feat-d">Token-by-token replies with tool calls, thinking, and results inline.</span></li><li><span class="feat-n">Steer mid-turn</span><span class="feat-d">Send messages while Claude works, or press Esc to interrupt.</span></li><li><span class="feat-n">Image input</span><span class="feat-d">Paste or attach up to 8 images per message.</span></li><li><span class="feat-n">In-app questions</span><span class="feat-d">Answer Claude&#x27;s clarifying questions right in the GUI.</span></li><li><span class="feat-n">Live game stats</span><span class="feat-d">Public player stats for Roblox games, inside the app.</span></li></ul>
+    </section>
+
+    <section class="block" id="screens">
+      <h2 class="label"><span class="sec-n">06</span>Screens</h2>
+      <div class="shots">
+      <figure class="shot"><img src="/assets/claudepearl/memory.webp" width="1440" height="900" alt="Memory constellation: sessions, decisions, summaries and skills as stars" loading="lazy"><figcaption>Memory: every session, decision, summary, and skill, with the skills library lit up.</figcaption></figure>
+      <figure class="shot"><img src="/assets/claudepearl/dreams.webp" width="1440" height="900" alt="Overnight research report with trending game niches and a buildable concept" loading="lazy"><figcaption>Dreams: the overnight research agent&#x27;s report.</figcaption></figure>
+      <figure class="shot"><img src="/assets/claudepearl/dashboard.webp" width="1440" height="900" alt="Dashboard with context, usage windows, session cost, tokens, and remembered decisions" loading="lazy"><figcaption>Dashboard: context, usage limits, cost, and the project&#x27;s remembered decisions.</figcaption></figure>
+      <figure class="shot"><img src="/assets/claudepearl/mcp.webp" width="1440" height="900" alt="MCP panel showing live connections to Roblox Studio and Blender" loading="lazy"><figcaption>MCP: live connection status for Roblox Studio and Blender.</figcaption></figure>
+      </div>
+    </section>
+    <aside class="takeaway in" style="--i:5">
+      <p class="label">Takeaway</p>
+      <p>The win wasn&#x27;t a nicer chat window; it was memory: sessions that remember why a decision was made.</p>
+    </aside>
+    <nav class="pager" aria-label="More work"><a class="prev" href="/software/facultywise"><span class="pager-k">← Previous</span><span class="pager-t">FacultyWise</span></a></nav>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Contact me: <a class="pop" href="mailto:mutyam@wisc.edu">mutyam@wisc.edu</a></p>
+      <p class="explored"></p>
+      <ul aria-label="Profiles">
+        <li><a class="pop" href="https://github.com/kritin29">GitHub</a></li>
+        <li><a class="pop" href="https://www.linkedin.com/in/mutyam-kritin">LinkedIn</a></li>
+        <li><a class="pop" href="https://kritin29.itch.io/">itch.io</a></li>
+      </ul>
+      <p class="controls"><span><kbd>1–9</kbd>Jump to section</span><span><kbd>←→</kbd>Prev / next</span><span><kbd>Esc</kbd>Back</span></p>
+    </div>
+  </footer>
+</body>
+</html>

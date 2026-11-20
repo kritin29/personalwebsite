@@ -141,11 +141,11 @@ PROJECTS = [
         oneliner=("A site-tracking platform for office fit-out contractors that ties daily progress, materials, and "
                   "delays together, and explains why a handover date moved."),
         hud=[("Role", "Lead engineer, team of 2"), ("Built", "Sep – Oct 2026"),
-             ("Client", "Office fit-out contractor"), ("Stack", "TypeScript · Fastify · Postgres · React")],
-        row_kind="Full-stack · Client project",
+             ("Type", "Two-person product"), ("Stack", "TypeScript · Fastify · Postgres · React")],
+        row_kind="Full-stack · Product",
         row_meta="Lead engineer · Team of 2 · Sep – Oct 2026",
         links=[],
-        note="Client project in a private repository. Screenshots use the demo seed data, with company names replaced.",
+        note="Private repository. Screenshots use the demo seed data, with company names replaced.",
         shots=[("/assets/syncinfra/delays.webp", 1440, 900,
                 "Floor layout with progress rings, a delay chain explaining a slipped handover date, and open flags",
                 "Why the handover date moved: a 30-day root cause rippling through every dependent stage."),
@@ -160,7 +160,7 @@ PROJECTS = [
                 "What is short: shortages from site and from the system, each waiting on a decision.")],
         thumb=("/assets/syncinfra/thumb.webp", 264, 165),
         flow=[("Report", "Site engineer claims progress on a stage"), ("Audit", "Auditor signs off, cuts, or rejects it"),
-              ("Event", "The write commits a domain event"), ("Recompute", "A worker rebuilds the affected rollups"),
+              ("Event", "The write is logged and a job is queued"), ("Recompute", "A worker recomputes the project's rollups"),
               ("Ripple", "The forecast shifts every dependent stage"), ("Act", "Dashboards raise flags, shortages, and order-by dates")],
         problem=("On fit-out projects, progress, material stock, and the programme live in separate spreadsheets, chats, "
                  "and meetings. Delays surface late, nobody can say which task caused them, claimed progress gets mixed "
@@ -170,7 +170,7 @@ PROJECTS = [
                   "forecast and pushes a slipped date down the chain, so every delay has a named root cause."),
         how=["Business rules live in Postgres itself: CHECK constraints, foreign keys, and triggers. Computed tables refuse any write that doesn't come from the recompute pipeline.",
              "Audit independence is enforced by triggers: whoever claims progress can't approve it, the approver can't report to the claimant (checked up the reporting chain), and nobody can clear a flag raised against themselves.",
-             "Event-driven recompute: each write appends a domain event, Postgres NOTIFY wakes a pg-boss worker, and only the affected rollups are rebuilt, in about 200 ms.",
+             "Event-driven recompute: each write lands in a transactional event log and queues a pg-boss job; a worker recomputes completion, forecasts, and delay chains. About 150 ms median from write to screen, measured locally on a 504-stage project.",
              "Capability-based access: every API entry point goes through one deny-by-default permission check that logs denials, and screens a role can't use are never drawn.",
              "Every write records who and when; the API refuses to start against a database that's behind its migrations; and a pure engine package with enforced boundaries holds the scheduling logic."],
         features=[
@@ -192,7 +192,7 @@ PROJECTS = [
             ("Sign-in", "Password login, emailed invitation and reset links, and a person switcher for demos."),
         ],
         stats_label="By the numbers",
-        stats=[("906", "automated tests"), ("92", "API endpoints"), ("83", "database tables")],
+        stats=[("915", "passing automated tests"), ("92", "API endpoints"), ("83", "database tables")],
         takeaway="Putting the rules in the database meant no screen, script, or future feature could quietly break them.",
     ),
     dict(

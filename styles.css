@@ -363,7 +363,8 @@ main { flex: 1; padding-block: 72px 96px; }
 
 .hud {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: column;          /* one equal column per item, however many there are */
+  grid-auto-columns: minmax(0, 1fr);
   margin-top: 32px;
   background: var(--surface);
   border: 2px solid var(--border);
@@ -804,7 +805,7 @@ html.pt-in::after {
   .tiles { grid-template-columns: 1fr; }
   .row--thumb { grid-template-columns: 28px minmax(0, 1fr); }
   .row-thumb { grid-column: 2; width: 100%; max-width: 280px; margin-top: 12px; }
-  .hud { grid-template-columns: 1fr 1fr; }
+  .hud { grid-auto-flow: row; grid-template-columns: 1fr 1fr; }
   .hud > div:nth-child(2n) { border-right: 0; }
   .hud > div:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
   .shots { grid-template-columns: 1fr; }

@@ -140,10 +140,10 @@ PROJECTS = [
         title="SyncInfra",
         oneliner=("A site-tracking platform for office fit-out contractors that ties daily progress, materials, and "
                   "delays together, and explains why a handover date moved."),
-        hud=[("Role", "Lead engineer, team of 2"), ("Built", "Sep – Oct 2026"),
-             ("Type", "Two-person product"), ("Stack", "TypeScript · Fastify · Postgres · React")],
+        hud=[("Role", "Lead developer, team of 2"), ("Built", "Sep – Oct 2026"),
+             ("Stack", "TypeScript · Fastify · Postgres · React")],
         row_kind="Full-stack · Product",
-        row_meta="Lead engineer · Team of 2 · Sep – Oct 2026",
+        row_meta="Lead developer · Team of 2 · Sep – Oct 2026",
         links=[],
         note="Private repository. Screenshots use the demo seed data, with company names replaced.",
         shots=[("/assets/syncinfra/delays.webp", 1440, 900,
